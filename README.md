@@ -13,3 +13,19 @@ https://developer.spotify.com/documentation/web-api/tutorials/getting-started
 
 ## Execute Test Suite
 Run test suite and generate allure report via `mvn clean test allure:serve` (This will open the report automatically after execution)
+
+## Scenarios Tested
+1. Get album by valid ID
+2. Get album by invalid ID
+3. Get tracks of an album
+4. Get artist by valid ID
+5. Get artist by invalid ID
+6. Fetch authentication token with valid credentials
+7. Fetch authentication token with invalid credentials
+8. Search for an artist by name
+9. Search for a track by name
+10. Search for an invalid type
+11. Search with a search result limit
+12. Search with pagination offset
+13. Get a track with a valid ID
+14. Get a track with an invalid ID
