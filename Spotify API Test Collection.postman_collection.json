@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "324d5a9a-5f16-440c-aefd-871194cfe908",
+		"name": "Spotify API Test Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48555877",
+		"_collection_link": "https://yasodhan-1086941.postman.co/workspace/Yasodhan's-Workspace~3819030a-ce16-4149-8153-f582dfd0fe74/collection/48555877-324d5a9a-5f16-440c-aefd-871194cfe908?action=share&source=collection_link&creator=48555877"
+	},
+	"item": [
+		{
+			"name": "Get Auth Spotify Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://accounts.spotify.com/status",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Playlist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}playlists/3cEYpjA9oz9GiPac4AsH4n",
+					"host": [
+						"{{base_url}}playlists"
+					],
+					"path": [
+						"3cEYpjA9oz9GiPac4AsH4n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Artist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}search?q=Adele&type=artist",
+					"host": [
+						"{{base_url}}search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Adele"
+						},
+						{
+							"key": "type",
+							"value": "artist"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Invalid Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}search?q=Adele&type=foobar",
+					"host": [
+						"{{base_url}}search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Adele"
+						},
+						{
+							"key": "type",
+							"value": "foobar"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Track",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}search?q=Hello&type=track",
+					"host": [
+						"{{base_url}}search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Hello"
+						},
+						{
+							"key": "type",
+							"value": "track"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}search?q=love&type=track&limit=5&offset=5",
+					"host": [
+						"{{base_url}}search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "love"
+						},
+						{
+							"key": "type",
+							"value": "track"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Valid Artist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}artists/4dpARuHxo51G3z768sgnrY",
+					"host": [
+						"{{base_url}}artists"
+					],
+					"path": [
+						"4dpARuHxo51G3z768sgnrY"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Invalid Artist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}artists/invalid123",
+					"host": [
+						"{{base_url}}artists"
+					],
+					"path": [
+						"invalid123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Valid Album",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}albums/4aawyAB9vmqN3uQ7FjRGTy",
+					"host": [
+						"{{base_url}}albums"
+					],
+					"path": [
+						"4aawyAB9vmqN3uQ7FjRGTy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Invalid Album",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}albums/invalidXYZ",
+					"host": [
+						"{{base_url}}albums"
+					],
+					"path": [
+						"invalidXYZ"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Valid Track",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}tracks/6habFhsOp2NvshLv26DqMb",
+					"host": [
+						"{{base_url}}tracks"
+					],
+					"path": [
+						"6habFhsOp2NvshLv26DqMb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Invalid Track",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}tracks/badID123",
+					"host": [
+						"{{base_url}}tracks"
+					],
+					"path": [
+						"badID123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Album Tracks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}albums/4aawyAB9vmqN3uQ7FjRGTy/tracks",
+					"host": [
+						"{{base_url}}albums"
+					],
+					"path": [
+						"4aawyAB9vmqN3uQ7FjRGTy",
+						"tracks"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
