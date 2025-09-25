@@ -15,7 +15,7 @@ public class TokenManager {
     private static String token;
     private static Instant expiry = Instant.EPOCH;
 
-    public static String getToken() {
+    public static synchronized String getToken() {
         if (token == null || Instant.now().isAfter(expiry.minusSeconds(10))) {
             fetchToken();
         }
@@ -35,7 +35,7 @@ public class TokenManager {
                 .header("Authorization", "Basic " + auth)
                 .formParams(Map.of("grant_type", "client_credentials"))
                 .when()
-                .post("core/token")
+                .post("api/token")
                 .then()
                 .statusCode(200)
                 .extract().response();
@@ -43,6 +43,6 @@ public class TokenManager {
         token = response.jsonPath().getString("access_token");
         int expiresIn = response.jsonPath().getInt("expires_in");
         expiry = Instant.now().plusSeconds(expiresIn);
-        Allure.step("Retrieved token successfully that expires in "+ expiry);
+        Allure.step("Retrieved token successfully");
     }
 }

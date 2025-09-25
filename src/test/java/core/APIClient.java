@@ -1,10 +1,12 @@
 package core;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.ConfigReader;
 
 import java.util.Base64;
+import java.util.Map;
 
 public class APIClient {
     public static Response get(String path) {
@@ -44,12 +46,12 @@ public class APIClient {
     public static Response getInvalidToken(String clientId, String clientSecret) {
         String auth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes());
         return RestAssured.given()
-                .baseUri(ConfigReader.get("token.url"))
-                .contentType("application/x-www-form-urlencoded")
+                .baseUri(ConfigReader.get("AUTHORIZATION_URL"))
+                .contentType(ContentType.URLENC)
                 .header("Authorization", "Basic " + auth)
-                .formParam("grant_type", "client_credentials")
+                .formParams(Map.of("grant_type", "client_credentials"))
                 .when()
-                .post()
+                .post("api/token")
                 .then().extract().response();
     }
 }
